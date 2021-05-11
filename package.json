@@ -1,0 +1,78 @@
+{
+  "name": "react-server-testing-library",
+  "version": "0.0.0-semantically-released",
+  "description": "Simple and complete React DOM server testing utilities that encourage good testing practices.",
+  "main": "dist/index.js",
+  "types": "dist/src/index.d.ts",
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "kcd-scripts build --no-clean --ignore=tests/**/*",
+    "lint": "kcd-scripts lint",
+    "setup": "npm install && npm run validate -s",
+    "test": "kcd-scripts test",
+    "test:update": "npm test -- --updateSnapshot --coverage",
+    "typecheck": "tsc --pretty --noEmit",
+    "validate": "kcd-scripts validate"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "testing",
+    "react",
+    "ui",
+    "dom",
+    "ssr",
+    "jsdom",
+    "unit",
+    "functional"
+  ],
+  "author": "Rachel Church <lehcar200@yahoo.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/runtime": "^7.12.5",
+    "@testing-library/dom": "^7.28.1",
+    "jsdom": "^16.5.3"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.6",
+    "@types/jsdom": "^16.2.10",
+    "@types/react-dom": "^17.0.0",
+    "kcd-scripts": "^7.5.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.1.2"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*"
+  },
+  "eslintConfig": {
+    "extends": "./node_modules/kcd-scripts/eslint.js",
+    "rules": {
+      "react/prop-types": "off",
+      "react/no-adjacent-inline-elements": "off",
+      "import/no-unassigned-import": "off",
+      "import/named": "off",
+      "testing-library/no-dom-import": "off",
+      "testing-library/prefer-screen-queries": "off"
+    }
+  },
+  "eslintIgnore": [
+    "node_modules",
+    "coverage",
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rachel-church/react-server-testing-library"
+  },
+  "bugs": {
+    "url": "https://github.com/rachel-church/react-server-testing-library/issues"
+  },
+  "homepage": "https://github.com/rachel-church/react-server-testing-library#readme"
+}

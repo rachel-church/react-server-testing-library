@@ -1,0 +1,43 @@
+name: validate
+on:
+  push:
+    branches:
+      - '+([0-9])?(.{+([0-9]),x}).x'
+      - 'main'
+      - 'next'
+      - 'next-major'
+      - 'beta'
+      - 'alpha'
+      - '!all-contributors/**'
+  pull_request: {}
+jobs:
+  main:
+    continue-on-error: ${{ matrix.react != 'latest' }}
+    strategy:
+      matrix:
+        node: [10.13, 12, 14, 15, 16]
+        react: [latest, next, experimental]
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛑 Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.0
+
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v2
+
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: 📥 Download deps
+        uses: bahmutov/npm-install@v1
+        with:
+          useLockFile: false
+
+      # https://reactjs.org/blog/2019/10/22/react-release-channels.html#using-the-next-channel-for-integration-testing
+      - name: ⚛️ Setup react
+        run: npm install react@${{ matrix.react }} react-dom@${{ matrix.react }}
+
+      - name: ▶️ Run validate script
+        run: npm run validate

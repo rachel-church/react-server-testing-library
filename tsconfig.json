@@ -1,0 +1,6 @@
+{
+  "extends": "kcd-scripts/shared-tsconfig.json",
+  "include": ["src/**/*",
+    "src/setup-env.ts"
+  ]
+}
