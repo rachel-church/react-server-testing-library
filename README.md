@@ -11,7 +11,7 @@ in `@testing-library/react` requesting support for testing react components rend
 
 ## Installation
 
-This module is distributed via [npm][npm] which is bundled with [node][node] and should be installed as one of your
+This module is distributed via npm and should be installed as one of your
 project's `devDependencies`:
 
 ```
